@@ -51,11 +51,11 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         final String query = "DELETE FROM user WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, (int) id);
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
             System.out.println("User was SUCCESSFULLY deleted from table!");
         } catch (SQLException e) {
-            System.out.println("User with id = "+id+" was NOT deleted from table!");
+            System.out.println("User with id = " + id + " was NOT deleted from table!");
         }
     }
     public void cleanUsersTable() {
